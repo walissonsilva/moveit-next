@@ -1,8 +1,6 @@
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 
 import challenges from '../data/challenges.json';
-
-import { CountdownContext } from "./CountdownContext";
 
 interface IChallengeData {
   type: 'body' | 'eye';
@@ -36,6 +34,10 @@ export function ChallengesProvider({ children }: ChallengeProviderProps) {
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
+  useEffect(() => {
+    Notification.requestPermission();
+  }, []);
+
   const levelUp = () => {
     setLevel(level + 1);
   }
@@ -45,6 +47,14 @@ export function ChallengesProvider({ children }: ChallengeProviderProps) {
 
     const challenge = challenges[randomChallengeIndex];
     setActiveChallenge(challenge);
+
+    new Audio('/notification.mp3').play();
+
+    if (Notification.permission === 'granted') {
+      new Notification('Novo Desafio! 🎉', {
+        body: `Valendo ${challenge.amount} xp...`,
+      });
+    }
   } 
 
   const resetChallenge = () => {

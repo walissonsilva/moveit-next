@@ -4,7 +4,7 @@
   background: var(--white);
   border-radius: 5px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1.2rem;
 
   display: flex;
   justify-content: center;
@@ -24,19 +24,23 @@
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.4;
+  padding: 0 0.5rem;
 }
 
 .challengeNotActive p {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   line-height: 1.4;
   max-width: 70%;
   margin-top: 3rem;
+  text-align: left;
+  font-size: 14px;
 }
 
 .challengeNotActive p img {
-  margin-bottom: 1rem;
+  margin-right: 1rem;
+  width: 40px;
 }
 
 .challengeActive {
