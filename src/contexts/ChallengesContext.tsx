@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
+import Cookies from 'js-cookie';
 
 import challenges from '../data/challenges.json';
 
@@ -38,6 +39,12 @@ export function ChallengesProvider({ children }: ChallengeProviderProps) {
     Notification.requestPermission();
   }, []);
 
+  useEffect(() => {
+    Cookies.set('level', String(level));
+    Cookies.set('currentExperience', String(currentExperience));
+    Cookies.set('challengesCompleted', String(challengesCompleted));
+  }, [level, currentExperience, challengesCompleted]);
+
   const levelUp = () => {
     setLevel(level + 1);
   }
@@ -52,7 +59,7 @@ export function ChallengesProvider({ children }: ChallengeProviderProps) {
 
     if (Notification.permission === 'granted') {
       new Notification('Novo Desafio! 🎉', {
-        body: `Valendo ${challenge.amount} xp...`,
+        body: `Valendo ${challenge.amount} xp!`,
       });
     }
   } 

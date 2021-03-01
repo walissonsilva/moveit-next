@@ -8,7 +8,7 @@ import Head from 'next/head';
 
 import styles from '../styles/pages/Home.module.css';
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div className={styles.container}>
       <Head>
@@ -30,4 +30,17 @@ export default function Home() {
       </section>
     </div>
   )
+}
+
+export const getServerSideProps = async () => {
+
+  const user = {
+    level: 1,
+    currentExperience: 50,
+    challengesCompleted: 2,
+  }
+
+  return {
+    props: { user }
+  }
 }
