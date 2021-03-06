@@ -10,7 +10,9 @@ const ExperienceBar: React.FC = () => {
     experienceToNextLevel,
   } = useContext(ChallengesContext);
 
-  const percentExperience = Math.round(currentExperience / experienceToNextLevel * 100);
+  const percentExperience = !isNaN(currentExperience) && !isNaN(experienceToNextLevel)
+    ? Math.round(currentExperience / experienceToNextLevel * 100)
+    : 0;
 
   return (
     <header className={styles.experienceBar}>
