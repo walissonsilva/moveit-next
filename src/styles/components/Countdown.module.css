@@ -78,3 +78,21 @@
   color: var(--text);
   cursor: not-allowed;
 }
+
+@media screen and (max-width: 1080px) {
+  .countdownContainer {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .countdownButton {
+    max-width: 500px;
+    margin: 2rem auto 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .countdownContainer > div {
+    font-size: 6.5rem;
+  }
+}
